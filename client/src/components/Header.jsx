@@ -10,7 +10,8 @@ import {SiGotomeeting} from 'react-icons/si'
 import {CgProfile} from 'react-icons/cg'
 import {MdNotifications} from 'react-icons/md'
 import {GoSettings} from 'react-icons/go'
-import {RiLogoutCircleRLine} from 'react-icons/ri'
+import {RiLogoutCircleRLine, RiRegisteredFill, RiLoginCircleFill} from 'react-icons/ri'
+
 
 import {motion} from 'framer-motion'
 
@@ -19,12 +20,17 @@ import {motion} from 'framer-motion'
 
 
 
-const Header = () => {
+const Header = ( { showLog, showSignin } ) => {
 
   const [searchValue, setSearchValue] = useState('')
   const [Open, Close] = useState(false)
   const [hide, show] = useState(true)
   const [hidepro, showpro] = useState(true)
+  const [ isLoggedIn, setIsLoggedIn ] = useState(false)
+ 
+  const LogOut = () => {
+    setIsLoggedIn(!isLoggedIn)
+  }
 
   
   const HideProfile = ()=>{
@@ -191,13 +197,43 @@ const Header = () => {
                   transition={{ ease: "linear", duration: .8, repeat: Infinity }}
                   className='text-2xl'><BsArrowRightShort /></motion.span></h3>
                 </li>
-                <li className='profile flex gap-3 items-center'>
+               {
+                isLoggedIn ? (
+                  <>
+                     <li className='profile flex gap-3 items-center'
+                     onClick={showLog}
+                     >
+                  <p className=' text-2xl'><RiRegisteredFill /></p>
+                  <h3 className='flex gap-3 items-center text-md'>REGISTER <motion.span
+                  animate={{ translateX: 5 }}
+                  transition={{ ease: "linear", duration: .8, repeat: Infinity }}
+                  className='text-2xl'><BsArrowRightShort /></motion.span></h3>
+                </li>
+                <li className='profile flex gap-3 items-center'
+                onClick={showSignin}
+                >
+                  <p className=' text-2xl'><RiLoginCircleFill /></p>
+                  <h3 className='flex gap-3 items-center text-md'>SIGNIN <motion.span
+                  animate={{ translateX: 5 }}
+                  transition={{ ease: "linear", duration: .8, repeat: Infinity }}
+                  className='text-2xl'><BsArrowRightShort /></motion.span></h3>
+                </li>
+               
+                  </>
+                )
+                :
+                (
+                  <li className='profile flex gap-3 items-center'
+                  onClick={LogOut}
+                  >
                   <p className=' text-2xl'><RiLogoutCircleRLine /></p>
                   <h3 className='flex gap-3 items-center text-md'>SIGNOUT <motion.span
                   animate={{ translateX: 5 }}
                   transition={{ ease: "linear", duration: .8, repeat: Infinity }}
                   className='text-2xl'><BsArrowRightShort /></motion.span></h3>
                 </li>
+                )
+               }
                
               </ul>
             </div>

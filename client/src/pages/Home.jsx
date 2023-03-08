@@ -1,17 +1,40 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Register from '../components/Register'
+import Login from '../components/Login'
 
-const Home = () => {
+const Home = ( {showRegister, setShowRegister, showLogin, setShowLogin} ) => {
 
-  const [showRegister, setShowRegister] = useState(true)
+
+ 
   return (
     <div className=' relative'>
-      Home
-    <div className={`  ${ showRegister ? 'hidden' : 'block' } `}>
-       <Register />
-    </div>
+      <div>
+   {
+    showRegister && (
+      <div>
+      <Register 
+        showRegister={showRegister}
+        setShowRegister={setShowRegister}
+      />
+      </div>
+    )
+   }
+   </div>
+   <div>
+   {
+    showLogin && (
+      <div>
+      <Login 
+        showLogin={showLogin}
+        setShowLogin={setShowLogin}
+      />
+      </div>
+    )
+   }
+
+   </div>
    
-    </div>
+  </div>
   )
 }
 
