@@ -6,7 +6,6 @@
     margin: 0; padding: 0; box-sizing: border-box;
 }
 body{
-    background-color: rgb(20, 14, 36);
     color: white;
     font-weight: 300;
 }
@@ -48,3 +47,47 @@ body{
     background-color: rgba(155, 149, 149, 0.274);
 }
 
+.showLike>small{
+    display: none;
+}
+.showLike:hover small{
+    display: block;
+}
+
+.times{
+    display: none;
+}
+.hidetimes:hover .times{
+    display: block;
+}
+.hidetimes:hover .arrow{
+    animation: myAnim 4s ease 0s infinite normal forwards;
+}
+
+@keyframes myAnim {
+	0%,
+	100% {
+		transform: translateX(0);
+	}
+
+	10%,
+	30%,
+	50%,
+	70% {
+		transform: translateX(-10px);
+	}
+
+	20%,
+	40%,
+	60% {
+		transform: translateX(10px);
+	}
+
+	80% {
+		transform: translateX(8px);
+	}
+
+	90% {
+		transform: translateX(-8px);
+	}
+}

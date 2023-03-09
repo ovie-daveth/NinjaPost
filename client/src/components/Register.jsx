@@ -3,7 +3,7 @@ import {motion} from 'framer-motion'
 
 const Register = ({ setShowRegister }) => {
 
-  
+  // /^[a-zA-Z0-9]+([a-zA-Z0-9](_|-| )[a-zA-Z0-9])*[a-zA-Z0-9]*$/
   
   return(
     <div className={`h-screen flex justify-center items-center z-10 fixed top-0 left-0 right-0 bottom-0 bg-blend-overlay sm:bg-gray-800 bg-slate-200 opacity-100 `}>

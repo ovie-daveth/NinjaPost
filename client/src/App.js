@@ -5,6 +5,7 @@ import CreatePost from './pages/CreatePost'
 import Header from './components/Header'
 import Footer from './components/Footer'
 
+
 const App = () => {
 
   const [showRegister, setShowRegister] = useState(false)
