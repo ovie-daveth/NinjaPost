@@ -1,20 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;1,200&display=swap');
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 *{
     margin: 0; padding: 0; box-sizing: border-box;
+    font-family: "Source Sans Pro","Helvetica Neue",Helvetica,sans-serif;
 }
 body{
     color: white;
     font-weight: 300;
 }
 .name>span{
-    display: none;
+    opacity: 0;
 }
 
 .submenu:hover .name>span{
-    display: block;
+    opacity: 1;
 }
 .submenu{
     transition: transform ease-in-out .4s;
@@ -47,12 +51,6 @@ body{
     background-color: rgba(155, 149, 149, 0.274);
 }
 
-.showLike>small{
-    display: none;
-}
-.showLike:hover small{
-    display: block;
-}
 
 .times{
     display: none;
@@ -91,3 +89,5 @@ body{
 		transform: translateX(-8px);
 	}
 }
+
+ 

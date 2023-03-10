@@ -20,13 +20,13 @@ import {motion} from 'framer-motion'
 
 
 
-const Header = ( { showLog, showSignin } ) => {
+const Header = ( { showLog, showSignin, setIsLoggedIn, isLoggedIn } ) => {
 
   const [searchValue, setSearchValue] = useState('')
   const [Open, Close] = useState(false)
   const [hide, show] = useState(true)
   const [hidepro, showpro] = useState(true)
-  const [ isLoggedIn, setIsLoggedIn ] = useState(false)
+ 
  
   const LogOut = () => {
     setIsLoggedIn(!isLoggedIn)
@@ -114,7 +114,7 @@ const Header = ( { showLog, showSignin } ) => {
    
   ]
   return (
-    <header className=' bg-gray-800 mt-2 text-white font-bold'>
+    <header className=' bg-gray-800 mt-2 text-white font-medium'>
       <div className="flex items-center justify-between m-auto py-3 px-8">
         <div className="flex gap-5 items-center">
           <div className="flex flex-col relative">
@@ -143,17 +143,17 @@ const Header = ( { showLog, showSignin } ) => {
            <div className=" md:flex gap-5 hidden">
            {
               menu.map((item) => (
-                <p className='text-gray-400 hover:text-white transition-colors ease-in-out .4s' key={item.id}><Link to={item.path}>{item.name}</Link></p>
+                <p className='text-gray-400 text-sm hover:text-white transition-colors ease-in-out .4s' key={item.id}><Link to={item.path}>{item.name}</Link></p>
               ))
             }
            </div>
            
         </div>
         <div className=" flex items-center gap-2">
-            <div className="bg-white text-black font-bold px-1">
+            <div className="bg-white text-black  px-1">
               <h2>NP</h2>
             </div>
-            <h1 className='md:text-lg text-md font-extrabold'>Ninja<span className=' text-white'>POST</span></h1>
+            <h1 className='md:text-md text-md'>Ninja<span className=' text-white'>POST</span></h1>
            
         </div>
         <div className="flex gap-5 items-center">
@@ -171,7 +171,9 @@ const Header = ( { showLog, showSignin } ) => {
                 <FaSearch />
               </label>
             </div>
-            <div className="relative bg-gray-400 w-[40px] h-[40px] rounded-full flex items-center justify-center p-[5px] border-gray-200 border-2">
+           {
+            isLoggedIn ? (
+              <div className="relative bg-gray-400 w-[40px] h-[40px] rounded-full flex items-center justify-center p-[5px] border-gray-200 border-2">
               <motion.img
               whileTap={{ scale: 1.2 }}
               src={avatar} width="30px" height="30px" alt="" 
@@ -199,32 +201,8 @@ const Header = ( { showLog, showSignin } ) => {
                   transition={{ ease: "linear", duration: .8, repeat: Infinity }}
                   className='text-2xl'><BsArrowRightShort /></motion.span></h3>
                 </li>
-               {
-                isLoggedIn ? (
-                  <>
-                     <li className='profile flex gap-3 items-center'
-                     onClick={showLog}
-                     >
-                  <p className=' text-2xl'><RiRegisteredFill /></p>
-                  <h3 className='flex gap-3 items-center text-md'>REGISTER <motion.span
-                  animate={{ translateX: 5 }}
-                  transition={{ ease: "linear", duration: .8, repeat: Infinity }}
-                  className='text-2xl'><BsArrowRightShort /></motion.span></h3>
-                </li>
-                <li className='profile flex gap-3 items-center'
-                onClick={showSignin}
-                >
-                  <p className=' text-2xl'><RiLoginCircleFill /></p>
-                  <h3 className='flex gap-3 items-center text-md'>SIGNIN <motion.span
-                  animate={{ translateX: 5 }}
-                  transition={{ ease: "linear", duration: .8, repeat: Infinity }}
-                  className='text-2xl'><BsArrowRightShort /></motion.span></h3>
-                </li>
-               
-                  </>
-                )
-                :
-                (
+            
+                
                   <li className='profile flex gap-3 items-center'
                   onClick={LogOut}
                   >
@@ -234,11 +212,21 @@ const Header = ( { showLog, showSignin } ) => {
                   transition={{ ease: "linear", duration: .8, repeat: Infinity }}
                   className='text-2xl'><BsArrowRightShort /></motion.span></h3>
                 </li>
-                )
-               }
                
               </ul>
             </div>
+            ) :
+            (
+              <>
+              <button
+              onClick={showSignin}
+              >Login</button>
+              <button
+               onClick={showLog}
+              >SignUp</button>
+              </>
+            )
+           }
         </div>
       </div>
     </header>

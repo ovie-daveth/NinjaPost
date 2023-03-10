@@ -10,6 +10,7 @@ const App = () => {
 
   const [showRegister, setShowRegister] = useState(false)
   const [ showLogin, setShowLogin ] = useState(false)
+  const [ isLoggedIn, setIsLoggedIn ] = useState(true)
 
   const showSignin = () =>{
     setShowLogin(true)
@@ -24,15 +25,19 @@ const App = () => {
     <Header 
     showLog={showLog}
     showSignin={showSignin}
+    isLoggedIn={isLoggedIn}
+    setIsLoggedIn={setIsLoggedIn}
     />
     <Routes>
     <Route path='/*' element={<Home 
-      showSignin={showSignin}
+       showSignin={showSignin}
        showLog={showLog}
        showRegister={showRegister}
        setShowRegister={setShowRegister}
        showLogin={showLogin}
        setShowLogin={setShowLogin}
+       isLoggedIn={isLoggedIn}
+       setIsLoggedIn={setIsLoggedIn}
     />} />
     <Route path="create" element={<CreatePost />} />
   </Routes>
