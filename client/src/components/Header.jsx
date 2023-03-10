@@ -124,7 +124,7 @@ const Header = ( { showLog, showSignin, setIsLoggedIn, isLoggedIn } ) => {
               onClick={HideMenu}
               />
           </div>
-          <ul className={` z-10 bg-gray-500 text-gray-300 px-4 py-3 ${ hide ? 'hidden' : 'flex'} flex-col gap-10 absolute top-8 left-0 w-[400px]`}>
+          <ul className={` z-30 bg-gray-500 text-gray-300 px-4 py-3 ${ hide ? 'hidden' : 'flex'} flex-col gap-10 absolute top-8 left-0 w-[400px]`}>
             {
               submenu.map((item) => (
                 <li key={item.id}>
@@ -179,7 +179,7 @@ const Header = ( { showLog, showSignin, setIsLoggedIn, isLoggedIn } ) => {
               src={avatar} width="30px" height="30px" alt="" 
               onClick={HideProfile}
               />
-              <ul className={`z-10 flex-col gap-5 bg-gray-500 text-gray-300 py-3 absolute top-10 -right-6 w-[240px] ${ hidepro ? 'hidden' : 'flex'}`}>
+              <ul className={`z-30 flex-col gap-5 bg-gray-500 text-gray-300 py-3 absolute top-10 -right-6 w-[240px] ${ hidepro ? 'hidden' : 'flex'}`}>
                 <li className='profile flex gap-3 items-center'>
                   <p className=' text-2xl'><CgProfile /></p>
                   <h3 className='flex gap-3 items-center text-md'>PROFILE <motion.span

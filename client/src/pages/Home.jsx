@@ -12,7 +12,7 @@ const Home = ( {showRegister, setShowRegister, showLogin, setShowLogin, isLogged
  
   return (
     <div className='bg-gray-900 relative'>
-      <div className="flex flex-col mt-5 m-auto w-full md:w-[97%]">
+      <div className="flex flex-col mt-5 m-auto px-2 md:px-[unset] w-full md:w-[97%]">
         <div className="flex flex-col gap-3 mb-4">
             { isLoggedIn && <h3 className='text-center text-sm font-medium '>Welcome to NP community! 👋 You're new here, but you can <span onClick={()=>hide(!show)} className=' underline hover:text-gray-400 cursor-pointer'>unlock special privileges</span> by contributing to discussions
             </h3>}

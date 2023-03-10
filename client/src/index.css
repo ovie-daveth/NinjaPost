@@ -90,4 +90,7 @@ body{
 	}
 }
 
- 
+ .Apost:hover .comments{
+    color: white !important;
+    transition: color ease-in-out .4s;
+ }

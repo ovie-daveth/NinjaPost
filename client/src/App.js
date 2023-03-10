@@ -4,6 +4,9 @@ import Home from './pages/Home'
 import CreatePost from './pages/CreatePost'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import Group from './pages/Group'
+import Profile from './pages/Profile'
+import ChatRoom from './pages/ChatRoom'
 
 
 const App = () => {
@@ -40,6 +43,9 @@ const App = () => {
        setIsLoggedIn={setIsLoggedIn}
     />} />
     <Route path="create" element={<CreatePost />} />
+    <Route path='/group' element={<Group />} />
+    <Route path="/profile" element={<Profile />} />
+    <Route path="/chat" element={<ChatRoom />} />
   </Routes>
   <Footer />
   </>

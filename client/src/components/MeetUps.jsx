@@ -8,7 +8,7 @@ import {FaPlus} from 'react-icons/fa'
 
 const MeetUps = () => {
 
-  const [showPost, setShowPost] = useState(false)
+  const [showPost, setShowPost] = useState(true)
 
   const ShowPost = () => {
     setShowPost(!showPost)
