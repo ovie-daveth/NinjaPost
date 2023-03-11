@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 import {Link} from 'react-router-dom'
 import {BsArrowRight} from 'react-icons/bs'
-import SingleTrendingGroup from './SingleTrendingGroup'
 import {TiTimes} from 'react-icons/ti'
 import {FaPlus} from 'react-icons/fa'
 import SingleCollabo from './SingleCollabo'

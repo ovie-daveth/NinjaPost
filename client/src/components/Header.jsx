@@ -149,13 +149,13 @@ const Header = ( { showLog, showSignin, setIsLoggedIn, isLoggedIn } ) => {
            </div>
            
         </div>
-        <div className=" flex items-center gap-2">
+          <Link to='/' className=" flex items-center gap-2">
             <div className="bg-white text-black  px-1">
               <h2>NP</h2>
             </div>
             <h1 className='md:text-md text-md'>Ninja<span className=' text-white'>POST</span></h1>
+          </Link>
            
-        </div>
         <div className="flex gap-5 items-center">
             <div className="flex relative">
               <input type="search"

@@ -13,6 +13,21 @@ body{
     color: white;
     font-weight: 300;
 }
+
+.scrollbar-hide::-webkit-scrollbar {
+    background-color: gray;
+    width: 2px;
+}
+.scrollbar-hide::-webkit-scrollbar-thumb{
+    background-color: rgb(41, 40, 40);
+}
+
+/* For IE, Edge and Firefox */
+.scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
 .name>span{
     opacity: 0;
 }

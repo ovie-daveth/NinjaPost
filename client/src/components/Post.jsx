@@ -67,7 +67,7 @@ const Post = () => {
         
       </div>
     </div>
-  </div>
+       </div>
       </section>
   )
 }
