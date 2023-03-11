@@ -13,7 +13,8 @@ const App = () => {
 
   const [showRegister, setShowRegister] = useState(false)
   const [ showLogin, setShowLogin ] = useState(false)
-  const [ isLoggedIn, setIsLoggedIn ] = useState(true)
+  const [ isLoggedIn, setIsLoggedIn ] = useState(false)
+  
 
   const showSignin = () =>{
     setShowLogin(true)

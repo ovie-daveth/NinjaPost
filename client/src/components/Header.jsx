@@ -26,10 +26,10 @@ const Header = ( { showLog, showSignin, setIsLoggedIn, isLoggedIn } ) => {
   const [Open, Close] = useState(false)
   const [hide, show] = useState(true)
   const [hidepro, showpro] = useState(true)
- 
+  
  
   const LogOut = () => {
-    setIsLoggedIn(!isLoggedIn)
+    setIsLoggedIn(false)
   }
 
   
