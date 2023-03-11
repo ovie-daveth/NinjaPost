@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import avatar from '../assets/avatar.jpg'
+import avatar from '../../assets/avatar.jpg'
 import {TiFlash} from 'react-icons/ti'
 
-const ReceiverMessage = () => {
+const Message = () => {
     const [seen, setSeen] = useState(true)
   return (
     <div className=' flex items-center justify-between px-3 bg-gray-800 text-gray-400 gap-4 font-medium w-[80%] py-2'>
@@ -20,4 +20,4 @@ const ReceiverMessage = () => {
   )
 }
 
-export default ReceiverMessage
+export default Message
