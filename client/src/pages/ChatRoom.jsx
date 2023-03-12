@@ -3,37 +3,34 @@ import avatar from '../assets/avatar.jpg'
 import {AiFillFilePdf, AiFillVideoCamera, AiFillTwitterCircle, AiFillInstagram, AiFillYoutube} from 'react-icons/ai'
 import {MdSchool, MdLocationPin, MdFacebook} from 'react-icons/md'
 import { Link } from 'react-router-dom'
-import {MdKeyboardArrowUp} from 'react-icons/md'
 import {BsArrowRight} from 'react-icons/bs'
 import {TiTimes} from 'react-icons/ti'
 import {FaPlus} from 'react-icons/fa'
 import Messages from '../components/chat/Messages'
 import ChatInput from '../components/chat/ChatInput'
+import PreviousPost from '../components/chat/PreviousPost'
 
 
 const ChatRoom = () => {
     const [following, setFollowing] = useState(false)
-    const [ShowLike, setShowLike] = useState(false)
     const [showPost, setShowPost] = useState(true)
+    const [profileshow, profilehide] = useState(false)
+
+    const showProfile = () =>{
+        profilehide(!profileshow)
+    }
 
     const ShowPost = () => {
       setShowPost(!showPost)
     }
-
-  const showLike = () => {
-    setShowLike(!ShowLike)
-  }
-  const HideLike = () => {
-    setShowLike(!ShowLike)
-  }
 
     const Follow = () => {
         setFollowing(!following)
     }
   
   return (
-    <div className='flex md:flex-row flex-col  gap-4 px-6 py-3'>
-       <div className="lg:block hidden md:w-[28%] max-h-[550px] overflow-y-auto scrollbar-hide order-1 md:order-[unset]">
+    <div className='flex md:flex-row flex-col  gap-4 px-6 mt-3'>
+       <div className={`lg:block md:w-[28%] max-h-screen overflow-y-auto scrollbar-hide order-1 md:order-[unset] ${profileshow ? 'block w-full h-[300px] md:h-screen' : 'hidden'}`}>
              <div className="bg-gray-800  flex flex-col gap-3  py-6 px-4">
                 <div className='flex flex-col items-center gap-2 '> 
                     <img src={avatar} 
@@ -79,25 +76,32 @@ const ChatRoom = () => {
             </div>
             </div>
        </div>
-        <div className=' lg:w-[40%] w-full'>
-            <div className="flex gap-2 items-center p-3 bg-gray-800">
-                <img src={avatar} alt="avatar" width="30px"
-                className=' rounded-full'
-                />
-                <p>Jade Uchenna</p>
+        <div className={`lg:w-[40%]  ${profileshow ? 'md:w-[70%] w-full order-2' : 'w-full'}`}>
+            <div className="flex items-center justify-between bg-gray-800">
+                <div className="flex gap-2 items-center p-3">
+                    <img src={avatar} alt="avatar" width="30px"
+                    className=' rounded-full lg:hidden'
+                    onClick={showProfile}
+                    />
+                    <div className=' flex flex-col '>
+                    <p>Omokefe Ovie David</p>
+                    <small className=' italic text-[12px]'>last seen <span>3:00pm</span></small>
+                    </div>
+                </div>
+                <p className=' pr-3 hover:text-gray-400 transition ease-in-out'><Link to="/">Back Home</Link></p>
             </div>
-            <div className="flex flex-col gap-4 pt-4 md:max-h-[430px] max-h-[380px] overflow-y-auto scrollbar-hide">
+            <div className="flex flex-col gap-4 pt-4 lg:max-h-[485px] max-h-screen overflow-y-auto scrollbar-hide">
                 <Messages />
             </div>
            <div className="block">
             <ChatInput />
            </div>
         </div>
-       <div className="lg:block hidden max-h-[550px] overflow-y-auto scrollbar-hide  md:w-[28%]">
+       <div className="lg:block hidden max-h-screen overflow-y-auto scrollbar-hide  md:w-[28%]">
             <div className=''>
             <div className={`hidetimes mb-4 flex items-center gap-4 cursor-pointer  py-1 ${ !showPost ? 'border-2 border-gray-600 px-3': null}`}>
             <div className="flex gap-3 items-center hover:text-blue-600 transition ease-in-out">
-            <h4 className={ `${ showPost ? 'border-b-2 border-gray-800' : null} pb-1 font-medium text-md`}><Link to='/'>Ovie's Post</Link> </h4> 
+            <h4 className={ `${ showPost ? 'border-b-2 border-gray-800' : null} pb-1 font-medium text-md`}><Link to='/post'>Ovie's Post</Link> </h4> 
             <span className='arrow text-lg'> <BsArrowRight /> </span>
             </div>
             <span className=' hover:rotate-90 transition-transform ease-in-out duration-200 cursor-pointer ml-auto text-2xl '
@@ -108,121 +112,8 @@ const ChatRoom = () => {
             </div>
             {
                 showPost &&
-                <div className="flex flex-col gap-3">
-            <div className='bg-gray-800 flex flex-col px-3 py-2'>
-                    <div>
-                        <h4 className=' text-sm md:text-[16px] transition ease-in-out duration-200 cursor-pointer px-1 py-1 hover:bg-gray-700'>The golden templates for React developmet...</h4>
-                    </div>
-                    <div className=' flex items-center gap-0 text-sm md:text-md font-semibold group-hover:text-white'>
-                        <span className='comments text-gray-300 hover:bg-gray-700 px-3 transition ease-in-out cursor-pointer'>ReactJs</span>
-                        <span className='comments text-gray-400 hover:bg-gray-700 px-3 transition ease-in-out cursor-pointer'>34 comments</span>
-                        <div className='  group relative flex flex-col justify-center items-center '
-                            onMouseEnter={showLike}
-                            onMouseLeave={HideLike}
-                            > 
-                            <MdKeyboardArrowUp 
-                            className='group-hover:text-blue-800 transition ease-out text-xl cursor-pointer'
-                            />
-                            { ShowLike && <small className={`absolute -bottom-2 -right-10 bg-white text-gray-600 font-semibold px-1`}>Likes</small>}
-                            <p className=' -mt-1 cursor-pointer'> 54</p>
-                        </div>
-                    </div>
-                </div>
-                <div className='bg-gray-800 flex flex-col px-3 py-2'>
-                    <div>
-                        <h4 className=' text-sm md:text-[16px] transition ease-in-out duration-200 cursor-pointer px-1 py-1 hover:bg-gray-700'>The golden templates for React developmet...</h4>
-                    </div>
-                    <div className=' flex items-center gap-0 text-sm md:text-md font-semibold group-hover:text-white'>
-                        <span className='comments text-gray-300 hover:bg-gray-700 px-3 transition ease-in-out cursor-pointer'>ReactJs</span>
-                        <span className='comments text-gray-400 hover:bg-gray-700 px-3 transition ease-in-out cursor-pointer'>34 comments</span>
-                        <div className='  group relative flex flex-col justify-center items-center '
-                            onMouseEnter={showLike}
-                            onMouseLeave={HideLike}
-                            > 
-                            <MdKeyboardArrowUp 
-                            className='group-hover:text-blue-800 transition ease-out text-xl cursor-pointer'
-                            />
-                            { ShowLike && <small className={`absolute -bottom-2 -right-10 bg-white text-gray-600 font-semibold px-1`}>Likes</small>}
-                            <p className=' -mt-1 cursor-pointer'> 54</p>
-                        </div>
-                    </div>
-                </div>
-                <div className='bg-gray-800 flex flex-col px-3 py-2'>
-                    <div>
-                        <h4 className=' text-sm md:text-[16px] transition ease-in-out duration-200 cursor-pointer px-1 py-1 hover:bg-gray-700'>The golden templates for React developmet...</h4>
-                    </div>
-                    <div className=' flex items-center gap-0 text-sm md:text-md font-semibold group-hover:text-white'>
-                        <span className='comments text-gray-300 hover:bg-gray-700 px-3 transition ease-in-out cursor-pointer'>ReactJs</span>
-                        <span className='comments text-gray-400 hover:bg-gray-700 px-3 transition ease-in-out cursor-pointer'>34 comments</span>
-                        <div className='  group relative flex flex-col justify-center items-center '
-                            onMouseEnter={showLike}
-                            onMouseLeave={HideLike}
-                            > 
-                            <MdKeyboardArrowUp 
-                            className='group-hover:text-blue-800 transition ease-out text-xl cursor-pointer'
-                            />
-                            { ShowLike && <small className={`absolute -bottom-2 -right-10 bg-white text-gray-600 font-semibold px-1`}>Likes</small>}
-                            <p className=' -mt-1 cursor-pointer'> 54</p>
-                        </div>
-                    </div>
-                </div>
-                <div className='bg-gray-800 flex flex-col px-3 py-2'>
-                    <div>
-                        <h4 className=' text-sm md:text-[16px] transition ease-in-out duration-200 cursor-pointer px-1 py-1 hover:bg-gray-700'>The golden templates for React developmet...</h4>
-                    </div>
-                    <div className=' flex items-center gap-0 text-sm md:text-md font-semibold group-hover:text-white'>
-                        <span className='comments text-gray-300 hover:bg-gray-700 px-3 transition ease-in-out cursor-pointer'>ReactJs</span>
-                        <span className='comments text-gray-400 hover:bg-gray-700 px-3 transition ease-in-out cursor-pointer'>34 comments</span>
-                        <div className='  group relative flex flex-col justify-center items-center '
-                            onMouseEnter={showLike}
-                            onMouseLeave={HideLike}
-                            > 
-                            <MdKeyboardArrowUp 
-                            className='group-hover:text-blue-800 transition ease-out text-xl cursor-pointer'
-                            />
-                            { ShowLike && <small className={`absolute -bottom-2 -right-10 bg-white text-gray-600 font-semibold px-1`}>Likes</small>}
-                            <p className=' -mt-1 cursor-pointer'> 54</p>
-                        </div>
-                    </div>
-                </div>
-                <div className='bg-gray-800 flex flex-col px-3 py-2'>
-                    <div>
-                        <h4 className=' text-sm md:text-[16px] transition ease-in-out duration-200 cursor-pointer px-1 py-1 hover:bg-gray-700'>The golden templates for React developmet...</h4>
-                    </div>
-                    <div className=' flex items-center gap-0 text-sm md:text-md font-semibold group-hover:text-white'>
-                        <span className='comments text-gray-300 hover:bg-gray-700 px-3 transition ease-in-out cursor-pointer'>ReactJs</span>
-                        <span className='comments text-gray-400 hover:bg-gray-700 px-3 transition ease-in-out cursor-pointer'>34 comments</span>
-                        <div className='  group relative flex flex-col justify-center items-center '
-                            onMouseEnter={showLike}
-                            onMouseLeave={HideLike}
-                            > 
-                            <MdKeyboardArrowUp 
-                            className='group-hover:text-blue-800 transition ease-out text-xl cursor-pointer'
-                            />
-                            { ShowLike && <small className={`absolute -bottom-2 -right-10 bg-white text-gray-600 font-semibold px-1`}>Likes</small>}
-                            <p className=' -mt-1 cursor-pointer'> 54</p>
-                        </div>
-                    </div>
-                </div>
-                <div className='bg-gray-800 flex flex-col px-3 py-2'>
-                    <div>
-                        <h4 className=' text-sm md:text-[16px] transition ease-in-out duration-200 cursor-pointer px-1 py-1 hover:bg-gray-700'>The golden templates for React developmet...</h4>
-                    </div>
-                    <div className=' flex items-center gap-0 text-sm md:text-md font-semibold group-hover:text-white'>
-                        <span className='comments text-gray-300 hover:bg-gray-700 px-3 transition ease-in-out cursor-pointer'>ReactJs</span>
-                        <span className='comments text-gray-400 hover:bg-gray-700 px-3 transition ease-in-out cursor-pointer'>34 comments</span>
-                        <div className='  group relative flex flex-col justify-center items-center '
-                            onMouseEnter={showLike}
-                            onMouseLeave={HideLike}
-                            > 
-                            <MdKeyboardArrowUp 
-                            className='group-hover:text-blue-800 transition ease-out text-xl cursor-pointer'
-                            />
-                            { ShowLike && <small className={`absolute -bottom-2 -right-10 bg-white text-gray-600 font-semibold px-1`}>Likes</small>}
-                            <p className=' -mt-1 cursor-pointer'> 54</p>
-                        </div>
-                    </div>
-                </div>
+            <div className="flex flex-col gap-3">
+               <PreviousPost />
             </div>
             }
             </div>

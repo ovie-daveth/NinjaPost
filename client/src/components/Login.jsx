@@ -1,4 +1,7 @@
 import React, {useEffect, useState} from 'react'
+import { signInWithEmailAndPassword } from "firebase/auth";
+import {auth} from '../firebaseConfig'
+import { toast } from 'react-toastify';
 
 const Login = ( {setShowLogin, setIsLoggedIn} ) => {
 
@@ -26,8 +29,16 @@ const Login = ( {setShowLogin, setIsLoggedIn} ) => {
     }
   }, [loggedIn])
 
-  const LoginUser = (e) =>{
+  const LoginUser = async (e) =>{
     e.preventDefault()
+    try {
+      const res = await signInWithEmailAndPassword(auth, email, password)
+      const user = res.user
+      setLoggedIn(true)
+      toast.success("Logged in succesfully")
+    } catch (error) {
+      toast.error("Unable to sign in")
+    }
    
   }
 
@@ -39,12 +50,12 @@ const Login = ( {setShowLogin, setIsLoggedIn} ) => {
         <form className=' bg-gray-600 flex flex-col gap-3 p-2 md:p-5 w-full' onSubmit={LoginUser}>
           <h1>{message}</h1>
             <div className="flex flex-col gap-1">
-              <label className="font-semibold text-md md:text-lg" htmlFor="uname">Username</label>
-              <input type="text" 
+              <label className="font-semibold text-md md:text-lg" htmlFor="uname">Email</label>
+              <input type="email" 
               required
-              placeholder='e.g John_1'
-              id='username'
-              value={username}
+              placeholder='e.g Johndoe@gmail.com'
+              id='email'
+              value={email}
               onChange={onChange}
               className=' bg-slate-300 rounded-md w-full px-3 py-1 placeholder:text-dm placeholder:font-semibold placeholder:text-gray-600 focus:outline-gray-400 ' />
             </div>

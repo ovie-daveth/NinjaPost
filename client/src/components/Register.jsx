@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import {auth} from '../firebaseConfig'
+import { toast } from 'react-toastify';
+
 
 const Register = ({ setShowRegister, setShowLogin}) => {
 
@@ -10,7 +14,6 @@ const Register = ({ setShowRegister, setShowLogin}) => {
     if(loggedIn){
       setShowRegister(false)
       setShowLogin(true)
-      window.location.reload()
     }
   }, [loggedIn])
 
@@ -32,9 +35,20 @@ const Register = ({ setShowRegister, setShowLogin}) => {
     }))
   }
 
-  const RegisterUser = (e) =>{
+  const RegisterUser = async (e) =>{
     e.preventDefault()
-    // console.log(JSON.stringify(formData))
+    if(password === password2){
+      try {
+        const response = await createUserWithEmailAndPassword(auth, email, password)
+        const user = response.user
+        console.log(user)
+        setLoggedIn(true)
+      } catch (error) {
+        toast.error(error)
+      }
+    }else{
+      toast.error("Password does not match")
+    }
     
   }
   
@@ -80,26 +94,26 @@ const Register = ({ setShowRegister, setShowLogin}) => {
               className=' bg-slate-300 rounded-md w-full px-3 py-1 placeholder:text-sm focus:outline-gray-400 placeholder:font-semibold placeholder:text-gray-600' />
             </div>
             <div className="flex flex-col gap-1">
-              <label className="font-semibold text-md md:text-lg" htmlFor="password">Password</label>
-              <input 
-              required
-              type="password" 
-              placeholder='*********' 
-              id="password"
-              value={password}
-              onChange={onChange}
-              className=' bg-slate-300 rounded-md w-full px-3 py-1 placeholder:text-sm focus:outline-gray-400 placeholder:font-semibold placeholder:text-gray-600' />
+                <label className="font-semibold text-md md:text-lg" htmlFor="password">Password</label>
+                <input 
+                required
+                type="password" 
+                placeholder='*********' 
+                id="password"
+                value={password}
+                onChange={onChange}
+                className=' bg-slate-300 rounded-md w-full px-3 py-1 placeholder:text-sm focus:outline-gray-400 placeholder:font-semibold placeholder:text-gray-600' />
             </div>
             <div className="flex flex-col gap-1">
-              <label className="font-semibold text-md md:text-lg" htmlFor="password2">Comfirm Password</label>
-              <input 
-              required
-              type="password" 
-              placeholder='*********' 
-              id="password2"
-              value={password2}
-              onChange={onChange}
-              className=' bg-slate-300 rounded-md w-full px-3 py-1 placeholder:text-sm focus:outline-gray-400 placeholder:font-semibold placeholder:text-gray-600' />
+                <label className="font-semibold text-md md:text-lg" htmlFor="password2">Comfirm Password</label>
+                <input 
+                required
+                type="password" 
+                placeholder='*********' 
+                id="password2"
+                value={password2}
+                onChange={onChange}
+                className=' bg-slate-300 rounded-md w-full px-3 py-1 placeholder:text-sm focus:outline-gray-400 placeholder:font-semibold placeholder:text-gray-600' />
             </div>
             <div className=' flex'>
               <small className='text-center '>Already have an account? Go back and<span

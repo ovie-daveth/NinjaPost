@@ -5,13 +5,16 @@ import App from './App'
 import { AnimatePresence } from 'framer-motion'
 import './index.css'
 
+
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
 root.render(
     <StrictMode>
         <BrowserRouter>
         <AnimatePresence>
-            <App />
+       
+                <App />
+        
         </AnimatePresence>
        
         </BrowserRouter>

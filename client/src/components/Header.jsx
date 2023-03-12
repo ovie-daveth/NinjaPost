@@ -10,7 +10,12 @@ import {SiGotomeeting} from 'react-icons/si'
 import {CgProfile} from 'react-icons/cg'
 import {MdNotifications} from 'react-icons/md'
 import {GoSettings} from 'react-icons/go'
-import {RiLogoutCircleRLine, RiRegisteredFill, RiLoginCircleFill} from 'react-icons/ri'
+import {RiLogoutCircleRLine} from 'react-icons/ri'
+import { useNavigate } from 'react-router-dom'
+
+import { signOut } from "firebase/auth";
+import {auth} from '../firebaseConfig'
+import { toast } from 'react-toastify';
 
 
 import {motion} from 'framer-motion'
@@ -27,9 +32,15 @@ const Header = ( { showLog, showSignin, setIsLoggedIn, isLoggedIn } ) => {
   const [hide, show] = useState(true)
   const [hidepro, showpro] = useState(true)
   
+  const navigate = useNavigate()
  
   const LogOut = () => {
-    setIsLoggedIn(false)
+    signOut(auth)
+    toast.success("Signed Out")
+    if(signOut){
+      setIsLoggedIn(false)
+      navigate('/')
+    }
   }
 
   
