@@ -1,6 +1,4 @@
 import React, {useEffect, useState} from 'react'
-import Axios from 'axios'
-
 
 const Login = ( {setShowLogin, setIsLoggedIn} ) => {
 
@@ -30,18 +28,7 @@ const Login = ( {setShowLogin, setIsLoggedIn} ) => {
 
   const LoginUser = (e) =>{
     e.preventDefault()
-    Axios.post('http://localhost:8800/login', {
-      username: username,
-      password: password
-    })
-    .then(response => {
-      setMessage(response.data.message);
-      setLoggedIn(!loggedIn)
-    })
-    .catch(error => {
-      setMessage(error.response.data.message);
-    });
-
+   
   }
 
   const [forgotpassword, setForgotPasword ] = useState(false)

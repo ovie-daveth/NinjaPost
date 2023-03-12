@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import Axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
 const Register = ({ setShowRegister, setShowLogin}) => {
@@ -36,23 +35,7 @@ const Register = ({ setShowRegister, setShowLogin}) => {
   const RegisterUser = (e) =>{
     e.preventDefault()
     // console.log(JSON.stringify(formData))
-    if(password === password2){
-      Axios.post('http://localhost:8800/register', {
-      fullname: fullname,
-      username: username,
-      email: email,
-      password: password
-    })
-    .then(response => {
-      setMessage(response.data.message);
-      setLoggedIn(!loggedIn)
-    })
-    .catch(error => {
-      setMessage(error.response.data.message);
-    });
-    } else {
-      alert("Password does not Matatch")
-    }
+    
   }
   
 

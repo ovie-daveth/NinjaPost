@@ -32,8 +32,8 @@ const ChatRoom = () => {
     }
   
   return (
-    <div className='flex  gap-4 px-6 py-3'>
-       <div className="w-[28%] max-h-[550px] overflow-y-auto scrollbar-hide">
+    <div className='flex md:flex-row flex-col  gap-4 px-6 py-3'>
+       <div className="lg:block hidden md:w-[28%] max-h-[550px] overflow-y-auto scrollbar-hide order-1 md:order-[unset]">
              <div className="bg-gray-800  flex flex-col gap-3  py-6 px-4">
                 <div className='flex flex-col items-center gap-2 '> 
                     <img src={avatar} 
@@ -79,21 +79,21 @@ const ChatRoom = () => {
             </div>
             </div>
        </div>
-        <div className=' w-[40%]'>
+        <div className=' lg:w-[40%] w-full'>
             <div className="flex gap-2 items-center p-3 bg-gray-800">
                 <img src={avatar} alt="avatar" width="30px"
                 className=' rounded-full'
                 />
                 <p>Jade Uchenna</p>
             </div>
-            <div className="flex flex-col gap-4 pt-4 max-h-[430px] overflow-y-auto scrollbar-hide">
+            <div className="flex flex-col gap-4 pt-4 md:max-h-[430px] max-h-[380px] overflow-y-auto scrollbar-hide">
                 <Messages />
             </div>
            <div className="block">
             <ChatInput />
            </div>
         </div>
-       <div className="max-h-[550px] overflow-y-auto scrollbar-hide  w-[28%]">
+       <div className="lg:block hidden max-h-[550px] overflow-y-auto scrollbar-hide  md:w-[28%]">
             <div className=''>
             <div className={`hidetimes mb-4 flex items-center gap-4 cursor-pointer  py-1 ${ !showPost ? 'border-2 border-gray-600 px-3': null}`}>
             <div className="flex gap-3 items-center hover:text-blue-600 transition ease-in-out">

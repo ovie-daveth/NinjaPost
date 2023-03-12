@@ -5,14 +5,14 @@ import {TiFlash} from 'react-icons/ti'
 const Message = () => {
     const [seen, setSeen] = useState(true)
   return (
-    <div className=' flex items-center justify-between px-3 bg-gray-800 text-gray-400 gap-4 font-medium w-[80%] py-2'>
+    <div className=' flex items-center justify-between px-3 bg-gray-700 text-gray-300 gap-4 font-medium w-[80%] py-2 rounded-r-2xl rounded-b-2xl'>
         <div className="flex flex-col">
             <p>Hey, Hi, HOW did your day go, well my name is Omokefe Ovie David</p>
             <small className='flex items-center gap-1'><span className='italic text-[12px]'>just now</span><span className={`${ seen ? 'text-orange-600': 'text-gray-400'}`}><TiFlash /></span></small>
         </div>
         <div className="flex">
         <img src={avatar} alt="avala" 
-            width="20px"
+            width="50px"
             className='rounded-full'
             />
         </div>
