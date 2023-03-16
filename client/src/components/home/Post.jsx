@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import {MdKeyboardArrowUp} from 'react-icons/md'
 import { Link } from 'react-router-dom'
-import avatar from '../assets/avatar.jpg'
+import avatar from '../../assets/avatar.jpg'
 import AuthourModalProfile from './AuthourModalProfile'
 
 const Post = () => {
@@ -55,7 +55,7 @@ const Post = () => {
     
     <div className=' flex flex-col gap-1'>
       <div>
-        <h4 className=' text-sm md:text-[16px] transition ease-in-out duration-200 cursor-pointer px-1 py-1 hover:bg-gray-700'>The golden templates for React developmet (The Nigeria seetings)</h4>
+        <h4 className=' text-sm md:text-[16px] transition ease-in-out duration-200 cursor-pointer px-1 py-1 hover:bg-gray-700'><Link to="/post">The golden templates for React developmet (The Nigeria seetings)</Link></h4>
       </div>
       <div className=' flex items-center gap-0 text-sm md:text-md font-semibold group-hover:text-white'>
        

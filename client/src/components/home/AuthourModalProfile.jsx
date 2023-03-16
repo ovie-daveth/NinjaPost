@@ -4,7 +4,7 @@ import {MdSchool, MdLocationPin, MdFacebook} from 'react-icons/md'
 import {BsFillChatSquareTextFill} from 'react-icons/bs'
 import {FaTimes} from 'react-icons/fa'
 import { Link } from 'react-router-dom'
-import avatar from '../assets/avatar.jpg'
+import avatar from '../../assets/avatar.jpg'
 
 const AuthourModalProfile = ( {modalHide} ) => {
   return (

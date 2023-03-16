@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import { signInWithEmailAndPassword } from "firebase/auth";
-import {auth} from '../firebaseConfig'
+import {auth} from '../../firebaseConfig'
 import { toast } from 'react-toastify';
 
 const Login = ( {setShowLogin, setIsLoggedIn} ) => {
@@ -11,9 +11,8 @@ const Login = ( {setShowLogin, setIsLoggedIn} ) => {
     password: '',
   })
 
-  const {username, email, password } = formData
+  const { email, password } = formData
 
-  const [message, setMessage] = useState('');
   const [loggedIn, setLoggedIn] = useState(false)
 
   const onChange = (e) => {
@@ -48,7 +47,6 @@ const Login = ( {setShowLogin, setIsLoggedIn} ) => {
     <div className=' flex justify-center items-center z-10 fixed top-0 left-0 right-0 bottom-0 bg-blend-overlay sm:bg-gray-800 bg-white opacity-100'>
        <div className="flex items-center justify-center bg-white px-10 py-10 w-full md:w-[70%] lg:w-[50%]">
         <form className=' bg-gray-600 flex flex-col gap-3 p-2 md:p-5 w-full' onSubmit={LoginUser}>
-          <h1>{message}</h1>
             <div className="flex flex-col gap-1">
               <label className="font-semibold text-md md:text-lg" htmlFor="uname">Email</label>
               <input type="email" 

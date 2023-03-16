@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import {auth} from '../firebaseConfig'
+import {auth} from '../../firebaseConfig'
 import { toast } from 'react-toastify';
 
 
 const Register = ({ setShowRegister, setShowLogin}) => {
 
-  const navigate = useNavigate()
   const [loggedIn, setLoggedIn] = useState(false)
 
   useEffect(() => {
@@ -26,7 +24,6 @@ const Register = ({ setShowRegister, setShowLogin}) => {
   })
 
   const { fullname, username, email, password, password2 } = formData
-  const [message, setMessage] = useState('');
 
   const onChange = (e) => {
     setFormData((prevState) => ({
@@ -59,7 +56,6 @@ const Register = ({ setShowRegister, setShowLogin}) => {
     <div className={`h-screen flex justify-center items-center z-10 fixed top-0 left-0 right-0 bottom-0 bg-blend-overlay sm:bg-gray-800 bg-slate-200 opacity-100 `}>
        <div className="flex items-center justify-center bg-slate-200 px-10 py-5 w-full md:w-[70%] lg:w-[50%]">
         <form className=' bg-gray-600 flex flex-col gap-3 px-4 py-8 w-full' onSubmit={RegisterUser}>
-          <h1>{message}</h1>
         <div className="flex flex-col gap-1">
               <label className="font-semibold text-md md:text-lg" htmlFor="fullname">Full Name</label>
               <input 

@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import {Link} from 'react-router-dom'
 import {BsArrowRight} from 'react-icons/bs'
 import SingleMeetup from './SingleMeetup'
-import space from '../assets/store.jpg'
+import space from '../../assets/store.jpg'
 import {TiTimes} from 'react-icons/ti'
 import {FaPlus} from 'react-icons/fa'
 
@@ -42,7 +42,7 @@ const MeetUps = () => {
           className=' my-1'
           alt="space" />
           <div className=' absolute bg-red-700 font-bold px-6 py-1 rounded-sm shadow-yellow-50 shadow-sm hover:shadow-md cursor-pointer'>
-             <Link to='/'><h3>CHECK ON OUR STORE</h3></Link> 
+             <Link to='/store'><h3>CHECK ON OUR STORE</h3></Link> 
           </div>
         </div>
     </div>

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const SingleMeetup = () => {
   return (
-   <Link to="/">
+   <Link to="/meetup">
     <div className=' group hover:bg-gray-800 px-1 py-2 transition ease-in-out flex gap-1 items-center'>
       <div className=' group-hover:bg-blue-600 px-2 py-[3px] text-center flex flex-col  bg-gray-600 rounded-sm'>
         <small className='font-sans text-[12px] -mb-1'>MAR</small>

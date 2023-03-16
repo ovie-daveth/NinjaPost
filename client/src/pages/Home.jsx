@@ -1,9 +1,9 @@
 import React, {useState} from 'react'
-import Register from '../components/Register'
-import Login from '../components/Login'
-import MeetUps from '../components/MeetUps'
-import RightBar from '../components/RightBar'
-import Posts from '../components/Posts'
+import Register from '../components/auth/Register'
+import Login from '../components/auth/Login'
+import MeetUps from '../components/home/MeetUps'
+import RightBar from '../components/home/RightBar'
+import Posts from '../components/home/Posts'
 
 const Home = ( {showRegister, setShowRegister, showLogin, setShowLogin, isLoggedIn, setIsLoggedIn, username} ) => {
 
